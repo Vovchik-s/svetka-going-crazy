@@ -7,21 +7,20 @@ const seconds = document.getElementById('seconds');
 const countdown = document.getElementById('countdown');
 const currentYear = new Date().getFullYear(); // current Year
 const quitTime = new Date(`August 10 ${currentYear} 00:00:00`);
-let muteIcon = document.getElementById('mute-icon');
-let mute = document.getElementById('mute');
-let audio = document.querySelector('audio'); //audio
+////////////////////////////////////////////////////////
+const muteIcon = document.getElementById('mute-icon');
+const audio = document.querySelector('audio'); //audio
+const play = document.getElementById('play');
+const pause = document.getElementById('pause');
+const addVolume = document.getElementById('addVolume');
+const removeVolume = document.getElementById('removeVolume');
+const mute = document.getElementById('mute');
+const audioControls = document.getElementById('audio-controls');
 
-let toggle = button => {
-    let hidden = audio.getAttribute("hidden");
 
-    if (hidden) {
-        audio.removeAttribute("hidden");
-        button.innerHTML = '<i class="fa-solid fa-eye"></i>';
-    } else {
-        audio.setAttribute("hidden", "hidden");
-        button.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
-    }
-}
+
+
+let isPlaying = false;
 
 // Background year refresh
 month.textContent = "August 10 ";
@@ -44,7 +43,6 @@ function updateCountdown() {
 
 }
 
-
 // Remove loading spinner after 1 second and display time
 
 setTimeout(() => {
@@ -53,3 +51,46 @@ setTimeout(() => {
 }, 1000)
 
 setInterval(updateCountdown, 1000)
+
+
+// audio controls
+
+play.addEventListener('click', () => {
+    audio.play();
+    isPlaying = true;
+    play.style.display = 'none';
+    pause.style.display = 'block';
+})
+
+pause.addEventListener('click', () => {
+    audio.pause();
+    isPlaying = false;
+    play.style.display = 'block';
+    pause.style.display = 'none';
+})
+
+addVolume.addEventListener('click', () => {
+    if(audio.volume < 1) {
+    audio.volume += 0.1;
+    }else{
+        audio.volume = 1;
+    }
+})
+
+removeVolume.addEventListener('click', () => {
+    if(audio.volume > 0.1) {
+    audio.volume -= 0.1;
+    }else{
+        audio.volume = 0;
+    }
+})
+
+mute.addEventListener('click', () => {
+    if(!audio.muted) {
+        audio.muted = true;
+        mute.innerHTML = '<i class="fa-solid fa-volume-mute"></i>';
+    }else if(audio.muted){
+        audio.muted = false;
+        mute.innerHTML = '<i class="fa-solid fa-volume-up"></i>';
+    }
+})

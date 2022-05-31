@@ -24,6 +24,13 @@ button {
   font-size: large;
   border: none;
   color: #a63535;
+  padding-right: 10px;
+}
+
+.audio-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 video {

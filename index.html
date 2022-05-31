@@ -12,15 +12,23 @@
 
 <body>
     <div style="z-index: 5" class="audio-container">
-        <audio autoplay="autoplay" loop="loop" controls>
-            <source src="https://cdn.britannica.com/70/92570-005-29A56B04/Dies-Irae-recording-Mozarts-Requiem-in-D-1953.mp3"/>
+        <audio id="audio" autoplay="autoplay" loop="loop">
+            <source
+                src="https://cdn.britannica.com/70/92570-005-29A56B04/Dies-Irae-recording-Mozarts-Requiem-in-D-1953.mp3" />
         </audio>
-        <button  onclick="toggle(this);"><i class="fa-solid fa-eye"></i></button>
+        <div class="audio-controls">
+            <button id="play">Play</button>
+            <button style="display: none" id="pause">Pause</button>
+            <button id="addVolume">Vol +</button>
+            <button id="removeVolume">Vol -</button>
+            <button id="mute"><i class="fa-solid fa-volume-up"></i></button>
+
+        </div>
     </div>
 
 
     <!-- <a id="mute" style="z-index: 5" href="#"><i class="fa-solid fa-volume-off" id="mute-icon" ></i></a> -->
-    
+
 
     <div class="video-overlay"></div>
     <video autoplay loop muted play-inline>
