@@ -19,7 +19,6 @@ const audioControls = document.getElementById('audio-controls');
 
 
 
-
 let isPlaying = false;
 
 // Background year refresh
